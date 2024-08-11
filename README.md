@@ -12,7 +12,7 @@
 1. **Clone Repository**
    - Clone the Iroha node setup repository:
    ```
-   git clone https://github.com/your-organization/iroha-node.git
+   git clone https://github.com/fabric-mabric/iroha-node.git
    cd iroha-node
    ```
 
