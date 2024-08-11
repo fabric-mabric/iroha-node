@@ -1,0 +1,133 @@
+{
+  "transactions": [
+    [
+      {
+        "Register": {
+          "NewDomain": {
+            "id": "xot",
+            "logo": null,
+            "metadata": {
+              "key": {
+                "String": "value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "Register": {
+          "NewAccount": {
+            "id": "admin@xot",
+            "signatories": [
+              "ed01209AA0FB47CD2F6368E40C6F11BF1A701B7DE04C5FB67D04DDB16A9554C7E8B4F3"
+            ],
+            "metadata": {
+              "key": {
+                "String": "value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "Grant": {
+          "object": {
+            "PermissionToken": {
+              "definition_id": "CanSetParameters",
+              "payload": null
+            }
+          },
+          "destination_id": {
+            "AccountId": "admin@xot"
+          }
+        }
+      },
+      {
+        "Sequence": [
+          {
+            "NewParameter": {
+              "Parameter": "?MaxTransactionsInBlock=512"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?BlockTime=2000"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?CommitTimeLimit=4000"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?TransactionLimits=4096,4194304_TL"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WSVAssetMetadataLimits=1048576,4096_ML"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WSVAssetDefinitionMetadataLimits=1048576,4096_ML"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WSVAccountMetadataLimits=1048576,4096_ML"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WSVDomainMetadataLimits=1048576,4096_ML"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WSVTriggerMetadataLimits=1048576,4096_ML"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WSVIdentLengthLimits=1,128_LL"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WASMFuelLimit=23000000"
+            }
+          },
+          {
+            "NewParameter": {
+              "Parameter": "?WASMMaxMemory=524288000"
+            }
+          }
+        ]
+      },
+      {
+        "Register": {
+          "NewRole": {
+            "id": "ADMIN_METADATA_ACCESS",
+            "permissions": [
+              {
+                "definition_id": "CanRemoveKeyValueInUserAccount",
+                "payload": {
+                  "account_id": "admin@xot"
+                }
+              },
+              {
+                "definition_id": "CanSetKeyValueInUserAccount",
+                "payload": {
+                  "account_id": "admin@xot"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  ],
+  "executor": "./executor.wasm"
+}

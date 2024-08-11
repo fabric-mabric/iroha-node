@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  iroha0:
+    image: hyperledger/iroha2:stable
+    platform: linux/amd64
+    network_mode: "host"
+    environment:
+      TORII_P2P_ADDR: ${TORII_P2P_ADDR}
+      TORII_API_URL: ${TORII_API_URL}
+      TORII_TELEMETRY_URL: ${TORII_TELEMETRY_URL}
+      IROHA_PUBLIC_KEY: ${IROHA_PUBLIC_KEY}
+      IROHA_PRIVATE_KEY: ${IROHA_PRIVATE_KEY}
+      SUMERAGI_TRUSTED_PEERS: ${SUMERAGI_TRUSTED_PEERS}
+      IROHA_GENESIS_ACCOUNT_PUBLIC_KEY: ${IROHA_GENESIS_ACCOUNT_PUBLIC_KEY}
+      IROHA_GENESIS_WAIT_FOR_PEERS_RETRY_COUNT_LIMIT: ${IROHA_GENESIS_WAIT_FOR_PEERS_RETRY_COUNT_LIMIT}
+      IROHA_GENESIS_WAIT_FOR_PEERS_RETRY_PERIOD_MS: ${IROHA_GENESIS_WAIT_FOR_PEERS_RETRY_PERIOD_MS}
+      IROHA_GENESIS_GENESIS_SUBMISSION_DELAY_MS: ${IROHA_GENESIS_GENESIS_SUBMISSION_DELAY_MS}
+    ports: # ports doesn't matter with host network mode
+      - "1337:1337"
+      - "8080:8080"
+    volumes:
+      - './peer-configs:/config'
+    init: true
